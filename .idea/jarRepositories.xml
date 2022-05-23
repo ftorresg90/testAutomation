@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="grupo-automatizacion-cdn" />
+      <option name="name" value="grupo-automatizacion-cdn" />
+      <option name="url" value="http://nexus.bch.bancodechile.cl:8081/repository/grupo-automatizacion-cdn/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="http://nexus.bch.bancodechile.cl:8081/repository/maven-central/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="madeUp" />
+      <option name="name" value="madeUp" />
+      <option name="url" value="http://nexus.bch.bancodechile.cl:8081/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="release-test" />
+      <option name="name" value="release-test" />
+      <option name="url" value="http://nexus.bch.bancodechile.cl:8081/repository/release-test/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots-test" />
+      <option name="name" value="snapshots-test" />
+      <option name="url" value="http://nexus.bch.bancodechile.cl:8081/repository/snapshots-test/" />
+    </remote-repository>
+  </component>
+</project>
