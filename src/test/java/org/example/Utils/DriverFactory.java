@@ -19,7 +19,6 @@ public final class DriverFactory {
     }
 
     public static void addDriver(WebDriver driver) {
-        //if(!System.getProperty("labExecution").equals("mobileAppBrowserstack")) driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         storedDrivers.add(driver);
         drivers.set(driver);

@@ -183,7 +183,7 @@ public class WebBasePage {
     }
 
     public void waitUntilPageIsLoaded(){
-        waitUntilElementIsInVisibleNonThrow(barraCargando,30);
+        waitUntilElementIsInVisibleNonThrow(barraCargando,5);
     }
 
     public boolean isVisibleMensajeError(String mensajeError){

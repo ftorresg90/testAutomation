@@ -1,7 +1,7 @@
 Feature: Consulta paginas mercado libre
   BDD que detalla el flujo para obtener informacion de las 3 primera paginas de mercado libre cuando se busca camiseta
 
-  @1
+  @smokeTest @busquedaMercadoLibre
   Scenario: Busqueda en mercado libre
     Given me encuentro en la pagina principal de mercado libre
     When realizo una busqueda de "Camisetas"
@@ -11,7 +11,7 @@ Feature: Consulta paginas mercado libre
     |nombreArticulo |
     |precioArticulo |
     |linksArticulos |
-    And genero archivo de texto con la informacion obtenida
+
 
 
 

@@ -16,6 +16,6 @@ import java.time.format.DateTimeFormatter;
 public class MainRun {
     @BeforeClass
     public static void configPrincipal(){
-        //settings project capabilities for project
+        System.setProperty("project.build", DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDateTime.now()));
     }
 }
