@@ -43,6 +43,7 @@ public class LocalChromeBrowser {
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.setExperimentalOption("useAutomationExtension", false);
 
+        chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--disable-notifications");
         chromeOptions.addArguments("--disable-infobars");
         chromeOptions.addArguments("--allow-running-insecure-content");

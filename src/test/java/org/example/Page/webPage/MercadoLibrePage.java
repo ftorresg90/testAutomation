@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.PageFactory;
 public class MercadoLibrePage extends WebBasePage {
 
     public MercadoLibrePage(WebDriver driver) {
@@ -111,5 +113,41 @@ public class MercadoLibrePage extends WebBasePage {
     public void clickBtnEntendido() {
         waitUntilElementIsVisible(btnEntendido);
         btnEntendido.click();
+    }
+
+    // --- TC auto-generated ---
+    public boolean isVisibleNombrePrimerArticulo() {
+        // Try multiple selectors to handle MercadoLibre UI changes
+        By[] selectors = {
+            By.xpath(LISTADO_NOMBRES_ARTICULOS),
+            By.xpath("//h2[contains(@class,'ui-search-item__title')]"),
+            By.xpath("//h2[contains(@class,'poly-box')]"),
+            By.xpath("//h2[contains(@class,'poly')]"),
+            By.cssSelector("h2.ui-search-item__title"),
+            By.cssSelector(".poly-component__title"),
+            By.xpath("//li[contains(@class,'ui-search-layout__item')]//h2"),
+            By.xpath("//ol[contains(@class,'ui-search-layout')]//h2"),
+        };
+        for (By sel : selectors) {
+            waitUntilElementIsVisibleNonThrow(sel, 5);
+            if (isVisible(sel)) return true;
+        }
+        return false;
+    }
+
+    public boolean isVisiblePrecioPrimerArticulo() {
+        By[] selectors = {
+            By.xpath(LISTADO_PRECIOS_ARTICULOS),
+            By.xpath("//span[contains(@class,'price-tag-fraction')]"),
+            By.xpath("//span[contains(@class,'andes-money-amount__fraction')]"),
+            By.cssSelector(".andes-money-amount__fraction"),
+            By.cssSelector(".price-tag-fraction"),
+            By.xpath("//li[contains(@class,'ui-search-layout__item')]//span[contains(@class,'price')]"),
+        };
+        for (By sel : selectors) {
+            waitUntilElementIsVisibleNonThrow(sel, 5);
+            if (isVisible(sel)) return true;
+        }
+        return false;
     }
 }
