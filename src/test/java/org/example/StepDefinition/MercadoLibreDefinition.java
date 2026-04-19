@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.example.Utils.ScenarioContext;
 public class MercadoLibreDefinition {
 
     MercadoLibrePage mercadoLibrePage;
@@ -77,4 +78,38 @@ public class MercadoLibreDefinition {
     public void generoArchivoDeTextoConLaInformacionObtenida() {
         Utils.generateTextPlain(nombresArticulos, preciosArticulos, linksArticulos);
     }
+
+    // --- TC auto-generated ---
+    private ScenarioContext context;
+    
+    
+    
+        @Given("abro la pagina principal de MercadoLibre")
+        public void abrirLaPaginaPrincipalDeMercadoLibre() {
+            MercadoLibrePage mercadoLibrePage = new MercadoLibrePage(DriverFactory.getDriver());
+            DriverFactory.getDriver().get("https://www.mercadolibre.com/");
+        }
+    
+        @Then("verifico icono de MercadoLibre")
+        public void verificarIconoDeMercadoLibre() {
+            MercadoLibrePage mercadoLibrePage = new MercadoLibrePage(DriverFactory.getDriver());
+            Assert.assertTrue("Icono de MercadoLibre no visible", mercadoLibrePage.isVisibleIconoMercadoLibre());
+        }
+
+    // --- TC auto-generated ---
+    private ScenarioContext context;
+    
+    
+    
+        @Given("abro la pagina principal de MercadoLibre")
+        public void abrirLaPaginaPrincipalDeMercadoLibre() {
+            MercadoLibrePage mercadoLibrePage = new MercadoLibrePage(DriverFactory.getDriver());
+            DriverFactory.getDriver().get("https://www.mercadolibre.com/");
+        }
+    
+        @Then("verifico icono de MercadoLibre")
+        public void verificarIconoDeMercadoLibre() {
+            MercadoLibrePage mercadoLibrePage = new MercadoLibrePage(DriverFactory.getDriver());
+            Assert.assertTrue("Icono de MercadoLibre no visible", mercadoLibrePage.isVisibleIconoMercadoLibre());
+        }
 }
