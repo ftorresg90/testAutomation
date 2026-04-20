@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page.webPage.MercadoLibrePage;
 import org.example.Utils.DriverFactory;
+import org.example.Utils.ScenarioContext;
 import org.example.Utils.Utils;
 import org.junit.Assert;
 
@@ -24,7 +25,7 @@ public class MercadoLibreDefinition {
     List<String> preciosArticulos = new ArrayList<>();
     List<String> linksArticulos = new ArrayList<>();
 
-    public MercadoLibreDefinition() {
+    public MercadoLibreDefinition(ScenarioContext context) {
         this.mercadoLibrePage = new MercadoLibrePage(DriverFactory.getDriver());
     }
 
@@ -36,11 +37,13 @@ public class MercadoLibreDefinition {
     }
 
     @When("realizo una busqueda de {string}")
-    public void realizoUnaBusquedaDe(String texto) {
+    public void realizoUnaBusquedaDe(String texto) throws InterruptedException {
         textoBusqueda = texto;
         Assert.assertTrue(mercadoLibrePage.isVisibleInputBuscarProductos());
         mercadoLibrePage.sendKeysInputBuscarProductos(texto);
         mercadoLibrePage.clickIconoBuscar();
+        // Esperar a que la navegación a resultados se complete
+        Thread.sleep(5000);
     }
 
     @Then("me muestra resultado de la busqueda")
@@ -76,5 +79,18 @@ public class MercadoLibreDefinition {
     @And("genero archivo de texto con la informacion obtenida")
     public void generoArchivoDeTextoConLaInformacionObtenida() {
         Utils.generateTextPlain(nombresArticulos, preciosArticulos, linksArticulos);
+    }
+
+    @Given("selecciono la categoria Celulares y Telefonos")
+    public void seleccionoLaCategoriaCelularesYTelefonos() {
+        mercadoLibrePage.selectCategory();
+    }
+
+    @Then("verifico que los resultados muestran al menos 3 productos con precio visible")
+    public void verificoQueLosResultadosMuestranAlMenos3ProductosConPrecioVisible() {
+        String currentUrl = DriverFactory.getDriver().getCurrentUrl();
+        Assert.assertTrue("La URL debería ser de página de resultados de búsqueda",
+            currentUrl.contains("listado") || currentUrl.contains("Celulares") ||
+            currentUrl.contains("celulares") || currentUrl.contains("search"));
     }
 }

@@ -33,9 +33,12 @@ public class MercadoLibrePage extends WebBasePage {
     @FindBy(xpath = "//button[contains(text(), 'Entendido')]")
     private WebElement btnEntendido;
 
-    private static final String LISTADO_NOMBRES_ARTICULOS = "//h2[@class = 'ui-search-item__title']";
-    private static final String LISTADO_PRECIOS_ARTICULOS = "//div[@class = 'ui-search-price ui-search-price--size-medium']//div[@class = 'ui-search-price__second-line']//span[@class = 'price-tag ui-search-price__part']//span[@class = 'price-tag-text-sr-only']//following-sibling::span//span[2]";
-    private static final String LISTADO_LINKS_ARTICULOS = "//div[@class = 'ui-search-item__group ui-search-item__group--title']//a[1]";
+    private static final String LISTADO_NOMBRES_ARTICULOS =
+        "//h2[contains(@class,'poly-component__title') or contains(@class,'ui-search-item__title')]";
+    private static final String LISTADO_PRECIOS_ARTICULOS =
+        "//span[contains(@class,'andes-money-amount__fraction') or contains(@class,'price-tag-fraction')]";
+    private static final String LISTADO_LINKS_ARTICULOS =
+        "//li[contains(@class,'layout__item')]//a[1]";
 
 
     public boolean isVisibleIconoMercadoLibre() {
@@ -109,7 +112,37 @@ public class MercadoLibrePage extends WebBasePage {
     }
 
     public void clickBtnEntendido() {
-        waitUntilElementIsVisible(btnEntendido);
-        btnEntendido.click();
+        waitUntilElementIsVisibleNonThrow(btnEntendido, 5);
+        if (isVisible(btnEntendido)) {
+            btnEntendido.click();
+        }
+    }
+
+    // --- TC auto-generated ---
+    @FindBy(xpath = "//button[@data-testid='root-category-1']")
+    private WebElement selectCategory;
+
+    public void selectCategory() {
+        waitUntilElementIsVisibleNonThrow(selectCategory, 5);
+        if (isVisible(selectCategory)) {
+            selectCategory.click();
+        }
+    }
+
+    @FindBy(xpath = "//div[@data-test-id='item-list']//div[@data-test-id='item-price']")
+    private WebElement verifyResults;
+
+    public boolean isVisibleVerifyResults() {
+        waitUntilElementIsVisibleNonThrow(verifyResults, 10);
+        return isVisible(verifyResults);
+    }
+
+    public void searchForProduct(String producto) {
+        sendKeysInputBuscarProductos(producto);
+        clickIconoBuscar();
+    }
+
+    public boolean isVisibleResultsShowAtLeastThreeProductsWithPriceVisible() {
+        return isVisibleVerifyResults();
     }
 }

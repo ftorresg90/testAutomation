@@ -15,3 +15,10 @@ Feature: Consulta paginas mercado libre
 
 
 
+
+@TC-005 @smokeTest
+  Scenario: Verificar filtro de categoría en resultados de búsqueda
+    Given me encuentro en la pagina principal de mercado libre
+    When realizo una busqueda de "Celulares"
+    Then selecciono la categoria Celulares y Telefonos
+    Then verifico que los resultados muestran al menos 3 productos con precio visible
