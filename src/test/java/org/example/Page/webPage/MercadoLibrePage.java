@@ -125,55 +125,58 @@ public class MercadoLibrePage extends WebBasePage {
         }
     }
 
-    // --- TC auto-generated ---
-    @FindBy(css = "[data-testid='search-input']")
-    private WebElement inputSearchBox;
+    // --- TC-010 ---
 
-    @FindBy(css = "[data-testid='search-button']")
-    private WebElement btnSearch;
-
-    @FindBy(xpath = "//label[@aria-label='Nuevo']")
-    private WebElement filterNewCondition;
-
-    @FindBy(xpath = "//option[@value='lowest_price']")
-    private WebElement sortLowestPrice;
-
-    @FindBy(xpath = "//h1[@class='product-title']")
-    private WebElement productTitle;
-
-    @FindBy(xpath = "//span[@class='product-price']")
-    private WebElement productPrice;
-
-    @FindBy(xpath = "//button[@aria-label='Comprar ahora']")
-    private WebElement btnBuyNow;
-
-    public void filterByNewCondition() {
-        waitUntilElementIsVisible(filterNewCondition);
-        filterNewCondition.click();
+    public void filtrarPorCondicionNuevo() {
+        By selector = By.xpath(
+            "//ul[contains(@class,'ui-search-filter-groups')]//a[contains(normalize-space(),'Nuevo')]"
+        );
+        waitUntilElementIsVisibleNonThrow(selector, 10);
+        if (isVisible(selector)) {
+            getDriver().findElement(selector).click();
+        }
     }
 
-    public void sortByLowestPrice() {
-        waitUntilElementIsVisible(sortLowestPrice);
-        sortLowestPrice.click();
+    public void ordenarPorMenorPrecio() {
+        By link = By.xpath(
+            "//a[contains(@href,'sort=price_asc') or contains(normalize-space(),'Menor precio')]"
+        );
+        waitUntilElementIsVisibleNonThrow(link, 10);
+        if (isVisible(link)) {
+            getDriver().findElement(link).click();
+        }
     }
 
-    public boolean isProductTitleVisible() {
-        waitUntilElementIsVisibleNonThrow(productTitle, 10);
-        return isVisible(productTitle);
+    public void clickPrimerResultado() {
+        By selector = By.xpath(
+            "(//li[contains(@class,'ui-search-layout__item')]//a[contains(@class,'ui-search-link')])[1]"
+        );
+        waitUntilElementIsVisible(selector);
+        getDriver().findElement(selector).click();
     }
 
-    public boolean isProductPriceVisible() {
-        waitUntilElementIsVisibleNonThrow(productPrice, 10);
-        return isVisible(productPrice);
+    public boolean isPaginaDetalleProducto() {
+        String url = getDriver().getCurrentUrl();
+        return url != null && (url.contains("/p/ML") || url.contains("articulo") || url.contains("/productos/"));
     }
 
-    public boolean isBuyNowButtonVisible() {
-        waitUntilElementIsVisibleNonThrow(btnBuyNow, 10);
-        return isVisible(btnBuyNow);
+    public boolean isTituloProductoVisible() {
+        By selector = By.xpath("//h1[contains(@class,'ui-pdp-title')]");
+        waitUntilElementIsVisibleNonThrow(selector, 10);
+        return isVisible(selector);
     }
 
-    public void clickBuyNowButton() {
-        waitUntilElementIsVisible(btnBuyNow);
-        btnBuyNow.click();
+    public boolean isPrecioProductoVisible() {
+        By selector = By.xpath("//span[contains(@class,'andes-money-amount__fraction')]");
+        waitUntilElementIsVisibleNonThrow(selector, 10);
+        return isVisible(selector);
+    }
+
+    public boolean isBotonComprarAhoraVisible() {
+        By selector = By.xpath(
+            "//button[contains(@class,'ui-pdp-action--primary') or @aria-label='Comprar ahora']"
+        );
+        waitUntilElementIsVisibleNonThrow(selector, 10);
+        return isVisible(selector);
     }
 }

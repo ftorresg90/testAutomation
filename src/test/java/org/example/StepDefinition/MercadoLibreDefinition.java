@@ -81,74 +81,43 @@ public class MercadoLibreDefinition {
         Utils.generateTextPlain(nombresArticulos, preciosArticulos, linksArticulos);
     }
 
-    // --- TC auto-generated ---
+    // --- TC-010 ---
     @And("filtro los resultados por condición nuevo")
-
-           public void filtroLosResultadosPorCondicionNuevo() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void filtroLosResultadosPorCondicionNuevo() {
+        mercadoLibrePage.filtrarPorCondicionNuevo();
+    }
 
     @And("ordeno los resultados por menor precio")
-
-           public void ordenoLosResultadosPorMenorPrecio() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void ordenoLosResultadosPorMenorPrecio() {
+        mercadoLibrePage.ordenarPorMenorPrecio();
+    }
 
     @And("hago click en el primer resultado de la búsqueda")
-
-           public void hagoClickEnElPrimerResultadoDeLaBusqueda() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void hagoClickEnElPrimerResultadoDeLaBusqueda() {
+        mercadoLibrePage.clickPrimerResultado();
+    }
 
     @Given("me encuentro en la página de detalle del producto")
-
-           public void meEncuentroEnLaPaginaDeDetalleDelProducto() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void meEncuentroEnLaPaginaDeDetalleDelProducto() {
+        Assert.assertTrue("No se cargó la página de detalle del producto",
+                mercadoLibrePage.isPaginaDetalleProducto());
+    }
 
     @Then("el título del producto es visible")
-
-           public void elTituloDelProductoEsVisible() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void elTituloDelProductoEsVisible() {
+        Assert.assertTrue("El título del producto no es visible",
+                mercadoLibrePage.isTituloProductoVisible());
+    }
 
     @Then("el precio del producto es visible")
-
-           public void elPrecioDelProductoEsVisible() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void elPrecioDelProductoEsVisible() {
+        Assert.assertTrue("El precio del producto no es visible",
+                mercadoLibrePage.isPrecioProductoVisible());
+    }
 
     @Then("el botón comprar ahora dice 'comprar ahora'")
-
-           public void elBotonComprarAhoraDiceComprarAhora() {
-
-             // No method available in Page Object for this step
-
-             // You may need to add a new method to the Page Object
-
-           }
+    public void elBotonComprarAhoraDiceComprarAhora() {
+        Assert.assertTrue("El botón 'Comprar ahora' no es visible",
+                mercadoLibrePage.isBotonComprarAhoraVisible());
+    }
 }
