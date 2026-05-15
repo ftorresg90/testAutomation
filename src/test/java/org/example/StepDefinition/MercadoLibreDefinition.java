@@ -77,4 +77,20 @@ public class MercadoLibreDefinition {
     public void generoArchivoDeTextoConLaInformacionObtenida() {
         Utils.generateTextPlain(nombresArticulos, preciosArticulos, linksArticulos);
     }
+
+    // --- TC auto-generated ---
+    @And("ingresar al primer resultado")
+             public void ingresarAlPrimerResultado() {
+                mercadoLibrePage.clickPrimerResultado();
+             }
+
+    @And("agregar al carrito")
+             public void agregarAlCarrito() {
+                mercadoLibrePage.agregarAlCarrito();
+             }
+
+    @And("verificar que el carrito tiene un producto")
+             public void verificarQueElCarritoTieneUnProducto() {
+                Assert.assertTrue("El carrito debe tener al menos un producto", mercadoLibrePage.cantidadDeProductosEnCarrito() >= 1);
+             }
 }

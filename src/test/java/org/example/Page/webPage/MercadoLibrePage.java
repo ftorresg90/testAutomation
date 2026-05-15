@@ -112,4 +112,29 @@ public class MercadoLibrePage extends WebBasePage {
         waitUntilElementIsVisible(btnEntendido);
         btnEntendido.click();
     }
+
+    // --- TC auto-generated ---
+    @FindBy(xpath = "//h2[@class = 'ui-search-item__title']")
+    private WebElement primerResultado;
+
+    @FindBy(xpath = "//button[@class = 'andes-button andes-button--primary']")
+    private WebElement btnAgregarAlCarrito;
+
+    @FindBy(xpath = "//span[@class = 'quantity']")
+    private WebElement labelCantidadProductos;
+
+    public void clickPrimerResultado() {
+        waitUntilElementIsVisible(primerResultado);
+        primerResultado.click();
+    }
+
+    public void agregarAlCarrito() {
+        waitUntilElementIsVisible(btnAgregarAlCarrito);
+        btnAgregarAlCarrito.click();
+    }
+
+    public int cantidadDeProductosEnCarrito() {
+        waitUntilElementIsVisible(labelCantidadProductos);
+        return Integer.parseInt(labelCantidadProductos.getText());
+    }
 }
