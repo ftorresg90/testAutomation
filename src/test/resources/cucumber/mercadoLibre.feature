@@ -12,6 +12,8 @@ Feature: Consulta paginas mercado libre
     |precioArticulo |
     |linksArticulos |
 
-
-
-
+@TC-103 @smokeTest
+  Scenario: Buscar laptop en Mercado Libre
+    Given me encuentro en la pagina principal de mercado libre
+    When realizo una busqueda de "laptop"
+    Then me muestra resultado de la busqueda
