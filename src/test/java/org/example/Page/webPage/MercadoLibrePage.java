@@ -112,4 +112,53 @@ public class MercadoLibrePage extends WebBasePage {
         waitUntilElementIsVisible(btnEntendido);
         btnEntendido.click();
     }
+
+    // --- TC auto-generated ---
+    @FindBy(id = "user-name")
+    private WebElement inputUsuario;
+
+    @FindBy(id = "password")
+    private WebElement inputContraseña;
+
+    @FindBy(id = "login-button")
+    private WebElement botonLogin;
+
+    @FindBy(css = "div.inventory_item:nth-child(1) > div.inventory_item_description > div.inventory_item_price")
+    private WebElement primerProducto;
+
+    @FindBy(css = "div.shopping_cart_container")
+    private WebElement carrito;
+
+    @FindBy(css = "span.shopping_cart_badge")
+    private WebElement cantidadProductos;
+
+    public void ingresarUsuarioYContraseña(String usuario, String contraseña) {
+        waitUntilElementIsVisible(inputUsuario);
+        inputUsuario.clear();
+        inputUsuario.sendKeys(usuario);
+        waitUntilElementIsVisible(inputContraseña);
+        inputContraseña.clear();
+        inputContraseña.sendKeys(contraseña);
+    }
+
+    public void clickBotonLogin() {
+        waitUntilElementIsVisible(botonLogin);
+        botonLogin.click();
+    }
+
+    public void agregarPrimerProductoAlCarrito() {
+        waitUntilElementIsVisible(primerProducto);
+        primerProducto.click();
+    }
+
+    public boolean isVisibleCarrito() {
+        waitUntilElementIsVisibleNonThrow(carrito, 10);
+        return isVisible(carrito);
+    }
+
+    public void getCantidadDeProductosEnCarrito() {
+        waitUntilElementIsVisible(cantidadProductos);
+        int cantidad = Integer.parseInt(cantidadProductos.getText());
+        System.out.println("La cantidad de productos en el carrito es: " + cantidad);
+    }
 }

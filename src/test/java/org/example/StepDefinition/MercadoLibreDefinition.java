@@ -77,4 +77,10 @@ public class MercadoLibreDefinition {
     public void generoArchivoDeTextoConLaInformacionObtenida() {
         Utils.generateTextPlain(nombresArticulos, preciosArticulos, linksArticulos);
     }
+
+    // --- TC auto-generated ---
+    @Given("me encuentro en la pagina de MercadoLibre")
+    public void meEncuentroEnLaPaginaDeMercadoLibre() {
+      DriverFactory.getDriver().get("https://www.mercadolibre.com/");
+    }
 }
