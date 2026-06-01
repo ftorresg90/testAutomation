@@ -2,8 +2,8 @@
   "schema_version": 1,
   "profile_name": "testAutomation",
   "repo_dir": "/Users/franciscotorres/Desktop/Proyectos Fran/testAutomation",
-  "generated_at": "2026-05-19T14:15:22Z",
-  "source_hash": "78d1b3f36c777408",
+  "generated_at": "2026-06-01T21:09:42Z",
+  "source_hash": "db67d444c0f4cc0f",
   "java_surface": {
     "classes": [
       {
@@ -1385,7 +1385,7 @@
   },
   "pom": {
     "java_version": "8",
-    "selenium_version": "4.1.2",
+    "selenium_version": "4.25.0",
     "cucumber_version": "7.2.3",
     "junit_version": "4.13.2",
     "testng_version": null,
@@ -1404,7 +1404,7 @@
       {
         "groupId": "io.github.bonigarcia",
         "artifactId": "webdrivermanager",
-        "version": "5.1.0"
+        "version": "5.9.2"
       },
       {
         "groupId": "org.awaitility",
@@ -1481,7 +1481,7 @@
     "pages_root": "src/test/java/org/example/Page",
     "utils_root": "src/test/java/org/example/Utils",
     "gitignore_entries": [
-      "target/"
+      "target/*"
     ]
   },
   "scanner_warnings": []

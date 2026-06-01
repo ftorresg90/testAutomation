@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
@@ -31,19 +32,19 @@ public class WebBasePage {
 
     protected WebBasePage(WebDriver driver){
         this.driver=driver;
-        this.wait= new WebDriverWait(driver, WAIT_TIMEOUT, POLLING);
+        this.wait= new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT), Duration.ofMillis(POLLING));
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,WAIT_TIMEOUT), this);
     }
 
     protected WebBasePage(WebDriver driver, int timeOutSec){
         this.driver=driver;
-        this.wait= new WebDriverWait(driver, timeOutSec, POLLING);
+        this.wait= new WebDriverWait(driver, Duration.ofSeconds(timeOutSec), Duration.ofMillis(POLLING));
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, WAIT_TIMEOUT), this);
     }
 
     protected WebBasePage(WebDriver driver, int timeOutSec, int pollingSec){
         this.driver=driver;
-        this.wait= new WebDriverWait(driver, timeOutSec, pollingSec);
+        this.wait= new WebDriverWait(driver, Duration.ofSeconds(timeOutSec), Duration.ofMillis(pollingSec));
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, WAIT_TIMEOUT), this);
     }
 
