@@ -1,0 +1,48 @@
+# .qa-agent/contract.yaml
+# Contrato del equipo para este repo. Lo que el agente NO puede inferir del
+# código va acá. Lo derivado (lo que el agente regenera) vive en
+# .qa-agent/derived/ — no se edita a mano.
+#
+# Generado como BORRADOR por `qa-autom init` el 2026-07-08 19:42 UTC.
+# REVISALO y commitealo. Los `# detectado:` son lo que el introspector ya
+# sabe (dejalos salvo que estén mal); los `TODO` los completás vos.
+
+schema: 1
+repo: testAutomation
+base_branch: main
+
+# ── Sistemas bajo prueba (SUT) ──────────────────────────
+# Cada SUT estable de este repo. El domain_tag llavea dom_evidence + lecciones.
+# TODO: completá base_url de cada sistema.
+suts:
+  - domain_tag: the-internet.herokuapp.com
+    base_url: "https://the-internet.herokuapp.com"
+    description: "Sitio de práctica the-internet (login TC-401/TC-402)"
+  - domain_tag: mercadolibre.cl
+    base_url: "https://www.mercadolibre.cl"
+    description: "MercadoLibre Chile (búsqueda de productos)"
+
+# ── Reglas del equipo ───────────────────────────────────
+# Decisiones que el agente debe respetar al generar código.
+rules:
+  selector_priority: [data-testid, id, css, xpath]
+  page_naming: "<Modulo>Page"
+  assertions: required          # cada step verifica algo
+  gherkin_language: en
+
+# ── Overrides del introspector (opcional) ───────────────
+# SOLO si el introspector infiere mal. null = manda lo detectado del código.
+overrides:
+  base_page_class: null         # detectado: org.example.Page.WebBasePage
+  layout: null                  # flat | by_module
+  base_package: null            # detectado: org.example
+
+# ── Toggles operativos ──────────────────────────────────
+features:
+  dom_capture: false            # @AfterStep vuelca DOM al fallar
+  attempt_green: false          # correr hasta verde (extra opcional, abajo del acantilado)
+
+# ── Notas libres del equipo (opcional) ──────────────────
+# Convenciones en prosa que no entren en un campo estructurado.
+notes: |
+
