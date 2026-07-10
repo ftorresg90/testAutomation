@@ -38,4 +38,25 @@ public class TheInternetSteps {
     public void verificarMensaje(String mensaje) {
         Assert.assertTrue("Mensaje de login exitoso no encontrado", page.verificarMensaje(mensaje));
     }
+
+    // --- TC auto-generated ---
+    @Given("abrir la pagina del dropdown")
+
+           public void abrirLaPaginaDelDropdown() {
+
+              page.navegarALaPaginaDelDropdown();
+
+           }
+
+    @When("seleccionar la opcion {int} del dropdown")public void seleccionarLaOpcionDelDropdown(int cantidad) {
+
+              page.seleccionarLaOpcionDelDropdown(cantidad);
+
+           }
+
+    @Then("verificar que la opcion {int} queda seleccionada")public void verificarQueLaOpcionQuedaSeleccionada(int cantidad) {
+
+              Assert.assertTrue("Opcion del dropdown no seleccionada", page.verificarQueLaOpcionQuedaSeleccionada(cantidad));
+
+           }
 }
