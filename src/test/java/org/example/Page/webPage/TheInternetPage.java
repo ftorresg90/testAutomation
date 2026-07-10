@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class TheInternetPage extends WebBasePage {
 
@@ -45,5 +46,24 @@ public class TheInternetPage extends WebBasePage {
     public boolean verificarMensaje(String mensaje) {
         waitUntilElementIsVisible(mensajeFlash);
         return mensajeFlash.getText().contains(mensaje);
+    }
+
+    @FindBy(css = "#dropdown")
+    private WebElement dropdown;
+
+    public void navegarALaPaginaDelDropdown() {
+        getDriver().get("https://the-internet.herokuapp.com/dropdown");
+    }
+
+    public void seleccionarLaOpcionDelDropdown(int opcion) {
+        waitUntilElementIsVisible(dropdown);
+        Select select = new Select(dropdown);
+        select.selectByIndex(opcion);
+    }
+
+    public boolean verificarQueLaOpcionQuedaSeleccionada(int opcion) {
+        waitUntilElementIsVisible(dropdown);
+        Select select = new Select(dropdown);
+        return select.getFirstSelectedOption().getText().equals("Option " + opcion);
     }
 }
